@@ -1,0 +1,5 @@
+com/reservationapp/webapp/reservation/ReservationWebappApplication.class
+com/reservationapp/webapp/reservation/client/RoomReservationService.class
+com/reservationapp/webapp/reservation/ReservationController.class
+com/reservationapp/webapp/reservation/domain/RoomReservation.class
+com/reservationapp/webapp/reservation/domain/Room.class

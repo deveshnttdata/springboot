@@ -1,4 +1,4 @@
-package com.frankmoley.webapp.reservation;
+package com.reservationapp.webapp.reservation;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
