@@ -1,4 +1,4 @@
-package com.frankmoley.webapp.reservation.domain;
+package com.reservationapp.webapp.reservation.domain;
 
 public class RoomReservation {
     private long roomId;

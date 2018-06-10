@@ -1,4 +1,4 @@
-package com.frankmoley.webapp.reservation.domain;
+package com.reservationapp.webapp.reservation.domain;
 
 /**
  * Created by frankmoley on 5/23/17.

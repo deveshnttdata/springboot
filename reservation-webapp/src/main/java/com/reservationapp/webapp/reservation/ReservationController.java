@@ -1,7 +1,8 @@
-package com.frankmoley.webapp.reservation;
+package com.reservationapp.webapp.reservation;
 
-import com.frankmoley.webapp.reservation.client.RoomReservationService;
-import com.frankmoley.webapp.reservation.domain.RoomReservation;
+import com.reservationapp.webapp.reservation.client.RoomReservationService;
+import com.reservationapp.webapp.reservation.domain.RoomReservation;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

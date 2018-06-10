@@ -1,12 +1,13 @@
-package com.frankmoley.webapp.reservation.client;
+package com.reservationapp.webapp.reservation.client;
 
-import com.frankmoley.webapp.reservation.domain.Room;
-import com.frankmoley.webapp.reservation.domain.RoomReservation;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.reservationapp.webapp.reservation.domain.Room;
+import com.reservationapp.webapp.reservation.domain.RoomReservation;
 
 import java.util.List;
 

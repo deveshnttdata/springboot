@@ -1,4 +1,4 @@
-package com.frankmoley.webapp.reservation;
+package com.reservationapp.webapp.reservation;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
