@@ -4,24 +4,24 @@ import java.util.Date;
 
 public class ProviderNetworkInformation {
 
-	Date networkEffDate;
-	Date networkEndDate;
+	String networkEffDate;
+	String networkEndDate;
 	String pnc;	
 	
 	public ProviderNetworkInformation() {
 		
 	}
 	
-	public Date getNetworkEffDate() {
+	public String getNetworkEffDate() {
 		return networkEffDate;
 	}
-	public void setNetworkEffDate(Date networkEffDate) {
+	public void setNetworkEffDate(String networkEffDate) {
 		this.networkEffDate = networkEffDate;
 	}
-	public Date getNetworkEndDate() {
+	public String getNetworkEndDate() {
 		return networkEndDate;
 	}
-	public void setNetworkEndDate(Date networkEndDate) {
+	public void setNetworkEndDate(String networkEndDate) {
 		this.networkEndDate = networkEndDate;
 	}
 	public String getPnc() {
