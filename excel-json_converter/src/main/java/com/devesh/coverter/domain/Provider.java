@@ -7,8 +7,8 @@ public class Provider {
 
 	String corpEntCd;
 	double pfin;
-	Date pfinStartDate;
-	Date pfinEndDate;
+	String pfinStartDate;
+	String pfinEndDate;
 	List<ProviderNetworkInformation> listProviderNetworkInfo;
 	String unsolicated;
 	
@@ -34,16 +34,16 @@ public class Provider {
 	public void setPfin(double pfin) {
 		this.pfin = pfin;
 	}
-	public Date getPfinStartDate() {
+	public String getPfinStartDate() {
 		return pfinStartDate;
 	}
-	public void setPfinStartDate(Date pfinStartDate) {
+	public void setPfinStartDate(String pfinStartDate) {
 		this.pfinStartDate = pfinStartDate;
 	}
-	public Date getPfinEndDate() {
+	public String getPfinEndDate() {
 		return pfinEndDate;
 	}
-	public void setPfinEndDate(Date pfinEndDate) {
+	public void setPfinEndDate(String pfinEndDate) {
 		this.pfinEndDate = pfinEndDate;
 	}
 	public List<ProviderNetworkInformation> getListProviderNetworkInfo() {
