@@ -45,6 +45,12 @@ public class Book implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", description=" + description + "]";
+	}
     
+	
+	
     
 }
