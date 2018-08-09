@@ -13,13 +13,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Reservation")
-@javax.persistence.SqlResultSetMapping(
+/*@javax.persistence.SqlResultSetMapping(
 	    name = "implicit", entities =
 	    @javax.persistence.EntityResult(entityClass = Reservation.class)
-	)
+	)*/
 @NamedNativeQuery(name = "Reservation.findByRestaurantId",
-query = "SELECT * FROM RESERVATION REV INNER JOIN RESTAURANT RES ON RES.RESTAURANT_ID=REV.RESTAURANT_ID WHERE REV.RESTAURANT_ID =?",
-resultClass=Reservation.class
+query = "SELECT * FROM RESERVATION REV INNER JOIN RESTAURANT RES ON RES.RESTAURANT_ID=REV.RESTAURANTID WHERE REV.RESTAURANTID=?"
+//resultClass=Reservation.class
 )
 public class Reservation implements Serializable{
 
@@ -40,10 +40,10 @@ public class Reservation implements Serializable{
 	
 	@Column(name="party_size")
 	private Integer partySize;
-	
+
 	@Column(name="restaurant_id")
 	private Integer restaurantId;
-
+	
 	@OneToOne
 	@JoinColumn(name="restaurant")
 	private Restaurant restaurant;
@@ -64,6 +64,12 @@ public class Reservation implements Serializable{
 		this.partySize = partySize;
 		this.restaurantId = restaurantId;
 		this.restaurant = restaurant;
+	}
+
+	@Override
+	public String toString() {
+		return "Reservation [Id=" + Id + ", dt=" + dt + ", userId=" + userId + ", partySize=" + partySize
+				+ ", restaurantId=" + restaurantId + ", restaurant=" + restaurant + "]";
 	}
 
 	public Long getId() {
@@ -113,18 +119,6 @@ public class Reservation implements Serializable{
 	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	@Override
-	public String toString() {
-		return "Reservation [Id=" + Id + ", dt=" + dt + ", userId=" + userId + ", partySize=" + partySize
-				+ ", restaurantId=" + restaurantId + ", restaurant=" + restaurant + "]";
-	}
-	
-	
 
 	
 	
