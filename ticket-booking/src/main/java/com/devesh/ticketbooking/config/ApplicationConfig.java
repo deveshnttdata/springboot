@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -34,7 +35,8 @@ public class ApplicationConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
 		// http.authorizeRequests().antMatchers("/**").permitAll().anyRequest().authenticated();
-		http.httpBasic().and().authorizeRequests().antMatchers("/movie/**").hasRole("USER");
+		http.httpBasic().and().authorizeRequests().antMatchers("/movie/**").hasRole("ADMIN")
+		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);;
 	}
 
 	private ApiInfo getApiInfo() {
@@ -46,6 +48,6 @@ public class ApplicationConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication().passwordEncoder(NoOpPasswordEncoder.getInstance()).withUser("devesh")
-				.password("devesh").roles("USER");
+				.password("devesh").roles("ADMIN");
 	}
 }
