@@ -3,18 +3,24 @@ package com.devesh.ticketbooking.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.devesh.ticketbooking.model.Movie;
+import com.devesh.ticketbooking.model.Ticket;
 import com.devesh.ticketbooking.repository.MovieRepository;
+import com.devesh.ticketbooking.repository.TicketRepository;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/movie")
@@ -23,6 +29,9 @@ public class TicketController {
 
 	@Autowired
 	MovieRepository movieRepository;
+	
+	@Autowired
+	TicketRepository ticketRepository;
 
 	@RequestMapping(value="/addmovie", method=RequestMethod.POST)
 	@ApiOperation(value = "Add a Movie to the list", response = Movie.class)
@@ -50,4 +59,42 @@ public class TicketController {
 
 		return movieRepository.findAll();
 	}
+	
+	@PostMapping(value="/bookTicket/{movie}/{seats}")
+	public Ticket bookTicket(@PathVariable String movie, @PathVariable List<Integer> seats){
+		System.out.println("Seats Requestd:"+seats);
+		
+		if(getSeatsFromCache(movie)==null){
+			addSeatsToCache(movie,seats);
+		}else{
+			List<Integer> listOfSeats = getSeatsFromCache(movie);
+			
+			System.out.println("Seats In Cache:"+listOfSeats.toString());
+			for(Integer seat : seats){
+				for(Integer s: listOfSeats){
+					if(seat==s){
+						System.out.println("Seat Locked:"+seat);
+						break;
+					}
+				}
+			}
+		}
+				
+		return null;
+	}
+	
+    @CachePut(value = "ticket", key="#movieName")
+    public List<Integer> addSeatsToCache(String movieName, List<Integer> seats) {
+    //save is not required since @CachePut takes care to put in cache, save is use for DB.
+      //repository.save(book);
+      return seats;
+    }
+    
+    @Cacheable(value = "ticket", key = "#movieName")
+    public List<Integer> getSeatsFromCache(String movieName) 
+    {
+        //Book insertedBook = repository.findById(id).get();
+        //System.out.println("Hello Manu,, Chai pee lo");
+        return null;
+    }
 }

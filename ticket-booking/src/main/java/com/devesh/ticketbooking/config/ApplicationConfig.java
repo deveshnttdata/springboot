@@ -35,7 +35,7 @@ public class ApplicationConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
 		// http.authorizeRequests().antMatchers("/**").permitAll().anyRequest().authenticated();
-		http.httpBasic().and().authorizeRequests().antMatchers("/movie/**").hasRole("ADMIN")
+		http.httpBasic().and().authorizeRequests().antMatchers("/movie/**").hasRole("USER")
 		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);;
 	}
 
@@ -48,6 +48,6 @@ public class ApplicationConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication().passwordEncoder(NoOpPasswordEncoder.getInstance()).withUser("devesh")
-				.password("devesh").roles("ADMIN");
+				.password("devesh").roles("USER");
 	}
 }
