@@ -1,5 +1,6 @@
 package com.devesh.ticketbooking.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "movie")
-public class Movie {
+public class Movie implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
