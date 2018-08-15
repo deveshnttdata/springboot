@@ -8,7 +8,7 @@ import com.devesh.springjpa.model.Reservation;
 
 public interface JPARepository  extends JpaRepository<Reservation,Long>{
 	
-	//@Query(name="Reservation.findByRestaurantId", nativeQuery = true)
-	public Reservation findByRestaurantId(Integer restaurantId);
+	@Query(name="Reservation.findByRestaurant", nativeQuery = true)
+	public Reservation findByRestaurant(Long restaurantId);
 
 }

@@ -15,8 +15,10 @@ public class ReservationController {
 	private ReservationService reservationService;
 	
 	@RequestMapping(value="/reservation/{restId}")
-	public Reservation searchRestaurantID(@PathVariable Integer restId){
-		return reservationService.searchRestaurantID(restId);
+	public Reservation searchRestaurantID(@PathVariable Long restId){
+		Reservation obj= reservationService.searchRestaurantID(restId);
+		System.out.println(obj);
+		return obj;
 	}
 
 }

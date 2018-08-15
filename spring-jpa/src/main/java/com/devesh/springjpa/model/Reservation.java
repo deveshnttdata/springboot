@@ -1,83 +1,54 @@
 package com.devesh.springjpa.model;
 
 import java.io.Serializable;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Reservation")
-/*@javax.persistence.SqlResultSetMapping(
-	    name = "implicit", entities =
-	    @javax.persistence.EntityResult(entityClass = Reservation.class)
-	)*/
-@NamedNativeQuery(name = "Reservation.findByRestaurantId",
-query = "SELECT * FROM RESERVATION REV INNER JOIN RESTAURANT RES ON RES.RESTAURANT_ID=REV.RESTAURANTID WHERE REV.RESTAURANTID=?"
-//resultClass=Reservation.class
-)
-public class Reservation implements Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@Table(name = "Reservation")
+public class Reservation implements Serializable {
 
 	@Id
-	@Column(name="id")
-	private Long Id;
-	
-	@Column(name="dt")
+	@Column(name = "id")
+	private Long id;
+
+	@Column(name = "dt")
 	private Timestamp dt;
-	
-	@Column(name="user_id")
+
+	@Column(name = "user_id")
 	private Long userId;
-	
-	@Column(name="party_size")
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "restaurant_id")
+	private Restaurant restaurant;
+
+	@Column(name = "party_size")
 	private Integer partySize;
 
-	@Column(name="restaurant_id")
-	private Integer restaurantId;
-	
-	@OneToOne
-	@JoinColumn(name="restaurant")
-	private Restaurant restaurant;
-	
-	
-	
+	@Column(name = "capacity")
+	private Integer seats;
 
-	public Reservation() {
-		//super();
+	public Integer getSeats() {
+		return seats;
 	}
 
-	public Reservation(Long id, Timestamp dt, Long userId, Integer partySize, Integer restaurantId,
-			Restaurant restaurant) {
-		super();
-		Id = id;
-		this.dt = dt;
-		this.userId = userId;
-		this.partySize = partySize;
-		this.restaurantId = restaurantId;
-		this.restaurant = restaurant;
-	}
-
-	@Override
-	public String toString() {
-		return "Reservation [Id=" + Id + ", dt=" + dt + ", userId=" + userId + ", partySize=" + partySize
-				+ ", restaurantId=" + restaurantId + ", restaurant=" + restaurant + "]";
+	public void setSeats(Integer seats) {
+		this.seats = seats;
 	}
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public Timestamp getDt() {
@@ -96,22 +67,6 @@ public class Reservation implements Serializable{
 		this.userId = userId;
 	}
 
-	public Integer getPartySize() {
-		return partySize;
-	}
-
-	public void setPartySize(Integer partySize) {
-		this.partySize = partySize;
-	}
-
-	public Integer getRestaurantId() {
-		return restaurantId;
-	}
-
-	public void setRestaurantId(Integer restaurantId) {
-		this.restaurantId = restaurantId;
-	}
-
 	public Restaurant getRestaurant() {
 		return restaurant;
 	}
@@ -120,6 +75,32 @@ public class Reservation implements Serializable{
 		this.restaurant = restaurant;
 	}
 
-	
-	
+	public Integer getPartySize() {
+		return partySize;
+	}
+
+	public void setPartySize(Integer partySize) {
+		this.partySize = partySize;
+	}
+
+	@Override
+	public String toString() {
+		return "Reservation [id=" + id + ", dt=" + dt + ", userId=" + userId + ", restaurant=" + restaurant
+				+ ", partySize=" + partySize + ", seats=" + seats + "]";
+	}
+
+	public Reservation(Long id, Timestamp dt, Long userId, Restaurant restaurant, Integer partySize, Integer seats) {
+		super();
+		this.id = id;
+		this.dt = dt;
+		this.userId = userId;
+		this.restaurant = restaurant;
+		this.partySize = partySize;
+		this.seats = seats;
+	}
+
+	public Reservation() {
+		super();
+	}
+
 }

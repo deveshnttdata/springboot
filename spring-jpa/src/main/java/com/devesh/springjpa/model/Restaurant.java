@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="restaurant")
-public class Restaurant implements Serializable{
+public class Restaurant{
 
 	/*@Column(name="id")
 	private Long id;*/
@@ -19,7 +19,7 @@ public class Restaurant implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 
 
 	@Id
@@ -30,44 +30,38 @@ public class Restaurant implements Serializable{
 	@Column(name="restaurant_name")
 	private String restaurantName;
 
-	
-	
-	
-
-	public Restaurant() {
-		//super();
-	}
-
-	public Restaurant(Long id, Integer restaurantId, String restaurantName) {
-		super();
-		//this.id = id;
-		this.restaurantId = restaurantId;
-		this.restaurantName = restaurantName;
-	}
-
-	/*public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}*/
 
 	public Integer getRestaurantId() {
 		return restaurantId;
 	}
 
+
 	public void setRestaurantId(Integer restaurantId) {
 		this.restaurantId = restaurantId;
 	}
+
 
 	public String getRestaurantName() {
 		return restaurantName;
 	}
 
+
 	public void setRestaurantName(String restaurantName) {
 		this.restaurantName = restaurantName;
 	}
+
+
+	public Restaurant(Integer restaurantId, String restaurantName) {
+		super();
+		this.restaurantId = restaurantId;
+		this.restaurantName = restaurantName;
+	}
+
+
+	public Restaurant() {
+		//super();
+	}
+
 
 	@Override
 	public String toString() {
@@ -75,6 +69,9 @@ public class Restaurant implements Serializable{
 	}
 
 	
+	
+	
+ 
 	
 	
 	

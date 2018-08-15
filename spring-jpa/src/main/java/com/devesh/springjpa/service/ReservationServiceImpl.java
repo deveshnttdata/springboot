@@ -13,9 +13,9 @@ public class ReservationServiceImpl implements ReservationService {
 	private JPARepository reservationJpaRepo;
 	
 	@Override
-	public Reservation searchRestaurantID(Integer restID) {
+	public Reservation searchRestaurantID(Long restID) {
 		// TODO Auto-generated method stub
-		return reservationJpaRepo.findByRestaurantId(restID);
+		return reservationJpaRepo.findByRestaurant(restID);
 	}
 
 	
