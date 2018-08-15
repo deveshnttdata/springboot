@@ -25,7 +25,7 @@ public class RedisController {
    
     
     @RequestMapping(value = "/book", method = RequestMethod.POST)
-    public Book saveBook(Book book) 
+    public Book saveBook(@RequestBody Book book) 
     {
         return repository.save(book);
     }
@@ -44,14 +44,14 @@ public class RedisController {
     @Cacheable(value = "book", key = "#title")
     public Book findGetOne(@PathVariable String title) 
     {
-        Book insertedBook = repository.getOne(title);
+        Book insertedBook = repository.findByTitle(title);
         System.out.println("Hello Devesh,, Chai pee lo");
         return insertedBook;
     }
     
     @RequestMapping(value = "/book/id/{id}", method = RequestMethod.GET)
     @Cacheable(value = "book", key = "#id")
-    public Book findBookById(@PathVariable String id) 
+    public Book findBookById(@PathVariable Integer id) 
     {
         Book insertedBook = repository.findById(id).get();
         System.out.println("Hello Manu,, Chai pee lo");

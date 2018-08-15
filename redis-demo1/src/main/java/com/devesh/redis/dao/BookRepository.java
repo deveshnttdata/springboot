@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.devesh.redis.model.Book;
 
-public interface BookRepository extends JpaRepository<Book, String>{
+public interface BookRepository extends JpaRepository<Book, Integer>{
 	
 	Book findByTitle(String title);
 	//Book findById(String id);

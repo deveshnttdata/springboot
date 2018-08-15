@@ -14,17 +14,17 @@ public class Book implements Serializable{
 	  private static final long serialVersionUID = 7156526077883281623L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-    private String id;
+    private Integer id;
  
     private String title;
-    private String author;
+    private Integer author;
     private String description;
     
     
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getTitle() {
@@ -33,10 +33,10 @@ public class Book implements Serializable{
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getAuthor() {
+	public Integer getAuthor() {
 		return author;
 	}
-	public void setAuthor(String author) {
+	public void setAuthor(Integer author) {
 		this.author = author;
 	}
 	public String getDescription() {
