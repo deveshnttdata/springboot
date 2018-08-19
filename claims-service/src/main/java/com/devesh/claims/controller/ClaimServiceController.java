@@ -11,6 +11,7 @@ import com.devesh.claims.dao.ClaimServicesDAO;
 import com.devesh.claims.model.Claim;
 import com.devesh.claims.model.Summary;
 import com.devesh.claims.repository.ClaimRepository;
+import com.devesh.claims.repository.SummaryRepository;
 
 @RestController
 public class ClaimServiceController {
@@ -21,12 +22,22 @@ public class ClaimServiceController {
 	@Autowired
 	ClaimServicesDAO clamServiceDao;
 	
+	@Autowired
+	SummaryRepository summaryRepository;
+	
 	
 	@RequestMapping(value="/claim/{claimId}")
 	public Claim getClaims(@PathVariable Integer claimId){
 		
 		
 		return claimRepository.findByClaimId(claimId);
+	}
+	
+	@RequestMapping(value="/allsummary")
+	public List<Summary> getAllSummaryDetails(){
+		
+		
+		return summaryRepository.findAll();
 	}
 	
 	@RequestMapping(value="/summary")

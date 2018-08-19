@@ -37,19 +37,22 @@ public class ClaimServicesDAOImpl implements ClaimServicesDAO {
 		
 		SessionFactory sessionFactory = session.getSessionFactory();
 		
+		Date startDate = Date.valueOf("2018-03-10");
+		Date endDate = Date.valueOf("2018-09-04");
+		
 		Criteria criteria = sessionFactory.openSession().createCriteria(Summary.class);
 		criteria.add(Restrictions.eq("memberId", 1690056));
 		criteria.add(Restrictions.eq("subscriberId", 1690056));
 		
 		Conjunction conjunction1= Restrictions.conjunction();
 		conjunction1.add(Restrictions.eq("accumId", "IN OPX"));
-		conjunction1.add(Restrictions.eq("startDate", Date.valueOf("2018-03-10")));
-		conjunction1.add(Restrictions.eq("endDate", Date.valueOf("2018-09-04")));
+		conjunction1.add(Restrictions.eq("startDate", startDate));
+		conjunction1.add(Restrictions.eq("endDate", endDate));
 		
 		Conjunction conjunction2= Restrictions.conjunction();
 		conjunction2.add(Restrictions.eq("accumId", "IN OPX - COC"));
-		conjunction2.add(Restrictions.eq("startDate", Date.valueOf("2017-01-01")));
-		conjunction2.add(Restrictions.eq("endDate", Date.valueOf("2017-12-31")));
+		conjunction2.add(Restrictions.eq("startDate", Date.valueOf(String.valueOf(startDate.toLocalDate().getYear()-1)+"-01-01")));
+		conjunction2.add(Restrictions.eq("endDate", Date.valueOf(String.valueOf(startDate.toLocalDate().getYear()-1)+"-12-31")));
 		
 		Disjunction disjunction = Restrictions.disjunction();
 		disjunction.add(conjunction1);
