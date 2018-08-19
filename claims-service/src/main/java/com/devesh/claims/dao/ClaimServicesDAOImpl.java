@@ -1,5 +1,6 @@
 package com.devesh.claims.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -42,13 +43,13 @@ public class ClaimServicesDAOImpl implements ClaimServicesDAO {
 		
 		Conjunction conjunction1= Restrictions.conjunction();
 		conjunction1.add(Restrictions.eq("accumId", "IN OPX"));
-		conjunction1.add(Restrictions.eq("startDate", "2018-03-10"));
-		conjunction1.add(Restrictions.eq("endDate", "2018-09-04"));
+		conjunction1.add(Restrictions.eq("startDate", Date.valueOf("2018-03-10")));
+		conjunction1.add(Restrictions.eq("endDate", Date.valueOf("2018-09-04")));
 		
 		Conjunction conjunction2= Restrictions.conjunction();
 		conjunction2.add(Restrictions.eq("accumId", "IN OPX - COC"));
-		conjunction2.add(Restrictions.eq("startDate", "2017-01-01"));
-		conjunction2.add(Restrictions.eq("endDate", "2017-12-31"));
+		conjunction2.add(Restrictions.eq("startDate", Date.valueOf("2017-01-01")));
+		conjunction2.add(Restrictions.eq("endDate", Date.valueOf("2017-12-31")));
 		
 		Disjunction disjunction = Restrictions.disjunction();
 		disjunction.add(conjunction1);
